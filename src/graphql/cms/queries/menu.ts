@@ -1,9 +1,9 @@
 import { gql } from "@apollo/client";
 
 export type MenuItem = {
-  _id: string;
-  clientPortalId: string;
-  webId?: string;
+   _id: string;
+   clientPortalId?: string;
+   webId?: string;
   parentId?: string;
   parent?: MenuItem;
   label?: string;

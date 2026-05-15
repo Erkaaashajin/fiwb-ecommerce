@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useMutation, useSubscription } from "@apollo/client";
-import { useApolloClient } from "@apollo/client";
+import { useMutation, useSubscription } from "@apollo/client/react";
+import { useApolloClient } from "@apollo/client/react";
 import {
   INVOICE_CREATE,
   INVOICES_CHECK,

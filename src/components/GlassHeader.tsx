@@ -4,8 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "@/components/ThemeProvider";
+import type { CmsMenuItem } from "@/graphql/cms/types";
 
-const NAV_LINKS = [
+const DEFAULT_NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products" },
   { label: "About", href: "/about" },
@@ -20,13 +21,24 @@ const LANGUAGES = [
   { code: "zh", label: "ZH" },
 ];
 
-export default function GlassHeader() {
-  const { theme, toggleTheme } = useTheme();
+interface GlassHeaderProps {
+  menuItems?: CmsMenuItem[];
+}
+
+export default function GlassHeader({ menuItems }: GlassHeaderProps = {}) {
   const [langOpen, setLangOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
   const parts = pathname.split("/");
   const currentLang = parts[1] || "mn";
+
+  // Build nav links: merge CMS menu items (header kind) with defaults
+  const navLinks = menuItems?.length
+    ? menuItems
+        .filter((item) => item.kind === "header" && item.label && item.url)
+        .sort((a, b) => (a.order || 0) - (b.order || 0))
+        .map((item) => ({ label: item.label!, href: item.url! }))
+    : DEFAULT_NAV_LINKS;
 
   const handleLangChange = (code: string) => {
     setLangOpen(false);
@@ -53,7 +65,7 @@ export default function GlassHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={`/${currentLang}${link.href === "/" ? "" : link.href}`}
@@ -97,27 +109,27 @@ export default function GlassHeader() {
           </div>
 
           <button
-            onClick={toggleTheme}
+            onClick={() => {
+              const html = document.documentElement;
+              html.classList.toggle("dark");
+            }}
             className="ios-glass-btn p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            ) : (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
-            )}
+            <svg className="w-5 h-5 hidden dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg className="w-5 h-5 block dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
           </button>
 
           <Link href={`/${currentLang}/cart`}>

@@ -8,7 +8,9 @@ export async function getServerApolloClient() {
   return new ApolloClient({
     link: new HttpLink({
       uri:
+        process.env.ERXES_ENDPOINT ??
         process.env.GRAPHQL_URL ??
+        process.env.NEXT_PUBLIC_ERXES_ENDPOINT ??
         process.env.NEXT_PUBLIC_GRAPHQL_URL ??
         "/graphql",
       headers: {

@@ -12,6 +12,7 @@ const FAQ_ITEMS = [
 ];
 
 export default function FaqPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("Faq");
 
   return (
@@ -33,11 +34,11 @@ export default function FaqPage({ params }: { params: { locale: string } }) {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">{t("stillHaveQuestions")}</h2>
             <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t("contactUsDesc")}</p>
-            <a href={`/${params.locale}/contact`} className="ios-glass-btn inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">{t("contactUs")}</a>
+            <a href={`/${locale}/contact`} className="ios-glass-btn inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">{t("contactUs")}</a>
           </div>
         </section>
       </main>
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }

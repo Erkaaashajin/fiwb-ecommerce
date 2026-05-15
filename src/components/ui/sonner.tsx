@@ -9,3 +9,6 @@ export function SonnerProvider({ children }: { children: React.ReactNode }) {
 export function Toaster() {
   return null;
 }
+
+// Re-export for convenience
+export { motion, AnimatePresence };

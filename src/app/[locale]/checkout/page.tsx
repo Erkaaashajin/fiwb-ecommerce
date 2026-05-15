@@ -5,22 +5,20 @@ import { useTranslations } from "next-intl";
 import FooterSection from "@/components/FooterSection";
 
 export default function CheckoutPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("Checkout");
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <main className="flex-1">
-        {/* Header */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl sm:text-4xl font-black tracking-tight">{t("checkout")}</h1>
           </div>
         </section>
 
-        {/* Checkout Content */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Delivery Form */}
             <div className="bg-card border border-border rounded-2xl p-6 space-y-6">
               <h2 className="text-xl font-bold tracking-tight">{t("deliveryInfo")}</h2>
 
@@ -74,14 +72,11 @@ export default function CheckoutPage({ params }: { params: { locale: string } })
               </button>
             </div>
 
-            {/* Order Summary */}
             <div className="bg-card border border-border rounded-2xl p-6 h-fit sticky top-24">
               <h2 className="text-lg font-bold mb-6">{t("orderSummary")}</h2>
 
-              {/* Order items would go here */}
               <div className="flex items-center gap-3 py-4 border-b border-border">
                 <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center text-muted-foreground text-xs overflow-hidden">
-                  {/* Product image */}
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">Product item</p>
@@ -115,7 +110,7 @@ export default function CheckoutPage({ params }: { params: { locale: string } })
         </section>
       </main>
 
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }

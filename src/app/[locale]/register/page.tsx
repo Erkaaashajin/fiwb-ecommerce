@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import FooterSection from "@/components/FooterSection";
 
 export default function RegisterPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("Register");
   const router = useRouter();
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ export default function RegisterPage({ params }: { params: { locale: string } })
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setTimeout(() => { setIsLoading(false); router.push(`/${params.locale}/`); }, 1500);
+    setTimeout(() => { setIsLoading(false); router.push(`/${locale}/`); }, 1500);
   };
 
   return (
@@ -49,11 +50,11 @@ export default function RegisterPage({ params }: { params: { locale: string } })
                 {isLoading ? t("creating") : t("createAccount")}
               </button>
             </form>
-            <p className="text-center text-sm text-muted-foreground">{t("alreadyHaveAccount")}{" "}<a href={`/${params.locale}/login`} className="text-primary hover:underline font-medium">{t("signIn")}</a></p>
+            <p className="text-center text-sm text-muted-foreground">{t("alreadyHaveAccount")}{" "}<a href={`/${locale}/login`} className="text-primary hover:underline font-medium">{t("signIn")}</a></p>
           </div>
         </motion.div>
       </main>
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }

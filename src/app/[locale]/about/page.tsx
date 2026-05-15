@@ -3,6 +3,7 @@ import FooterSection from "@/components/FooterSection";
 import { useTranslations } from "next-intl";
 
 export default function AboutPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("About");
 
   return (
@@ -77,7 +78,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
           </div>
         </section>
       </main>
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }

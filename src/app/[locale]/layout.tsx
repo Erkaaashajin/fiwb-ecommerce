@@ -4,7 +4,7 @@ import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SmoothScrollProvider } from "@/components/SmoothScroll";
 import { AuthProvider } from "@/lib/auth/AuthContext";
-import ApolloClientProvider from "@/lib/apollo/provider";
+import { ApolloWrapper } from "@/lib/apollo/provider";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export default async function LocaleLayout({
           <SmoothScrollProvider>
             <NextIntlClientProvider messages={messages}>
               <AuthProvider>
-                <ApolloClientProvider>{children}</ApolloClientProvider>
+                <ApolloWrapper>{children}</ApolloWrapper>
               </AuthProvider>
             </NextIntlClientProvider>
           </SmoothScrollProvider>

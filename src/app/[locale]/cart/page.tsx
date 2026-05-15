@@ -13,6 +13,7 @@ const MOCK_CART_ITEMS = [
 ];
 
 export default function CartPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("Cart");
   const [items, setItems] = useState(MOCK_CART_ITEMS);
 
@@ -85,15 +86,15 @@ export default function CartPage({ params }: { params: { locale: string } }) {
                       <div className="flex justify-between text-lg font-bold text-foreground"><span>{t("total")}</span><span className="text-primary">{total.toLocaleString()} ₮</span></div>
                     </div>
                   </div>
-                  <Link href={`/${params.locale}/checkout`}><button className="ios-glass-btn w-full py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">{t("checkout")}</button></Link>
-                  <Link href={`/${params.locale}/products`}><button className="w-full mt-3 py-3 text-sm text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>{t("continueShopping")}</button></Link>
+                  <Link href={`/${locale}/checkout`}><button className="ios-glass-btn w-full py-3.5 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">{t("checkout")}</button></Link>
+                  <Link href={`/${locale}/products`}><button className="w-full mt-3 py-3 text-sm text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"><svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6" /></svg>{t("continueShopping")}</button></Link>
                 </div>
               </div>
             </div>
           )}
         </section>
       </main>
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }

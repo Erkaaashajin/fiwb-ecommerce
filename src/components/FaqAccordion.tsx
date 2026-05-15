@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 
 interface FaqAccordionProps {
-  items: Array<{ question: string; answer: string }>;
-}
+   items: Array<{ question: string; answer: string }>;
+   locale?: string;
+ }
 
 export default function FaqAccordion({ items = [] }: FaqAccordionProps) {
   return (

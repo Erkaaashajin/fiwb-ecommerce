@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 
 export default function ContactPage({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const t = useTranslations("Contact");
 
   return (
@@ -51,7 +52,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
           </motion.div>
         </section>
       </main>
-      <FooterSection locale={params.locale} />
+      <FooterSection locale={locale} />
     </div>
   );
 }
