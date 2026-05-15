@@ -1,12 +1,5 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-
-export default function RootPage() {
-  const router = useRouter();
-  useEffect(() => {
-    router.push("/mn");
-  }, []);
-  return null;
+export default async function RootPage() {
+  redirect("/mn");
 }
