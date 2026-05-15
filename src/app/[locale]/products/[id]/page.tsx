@@ -1,30 +1,50 @@
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { getMessages } from "next-intl/server";
 import FooterSection from "@/components/FooterSection";
 import Image from "@/components/common/Image";
 import { getServerApolloClient } from "@/lib/apollo/server-client";
 import { CP_POST } from "@/graphql/cms/queries";
 import type { CmsPost } from "@/graphql/cms/types";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const messages = await getMessages();
+  const t = (key: string) => messages[key] || key;
+  return {
+    title: t("Products.productDetails") || "Product Details",
+    description: t("Products.viewProduct") || "View product details.",
+  };
+}
+
 async function getProduct(slug: string, locale: string): Promise<CmsPost | null> {
-  const client = await getServerApolloClient();
-  const { data } = await client.query<{ cpPost: CmsPost }>({
-    query: CP_POST,
-    variables: { slug, language: locale },
-  });
-  return data?.cpPost || null;
+  try {
+    const client = await getServerApolloClient();
+    const { data } = await client.query<{ cpPost: CmsPost }>({
+      query: CP_POST,
+      variables: { slug, language: locale },
+    });
+    return data?.cpPost || null;
+  } catch {
+    return null;
+  }
 }
 
 export default async function ProductDetailPage({
   params,
 }: {
-  params: { locale: string; id: string };
+  params: Promise<{ locale: string; id: string }>;
 }) {
-  const { locale, id } = params;
-  const t = useTranslations("Products");
+  const { locale, id } = await params;
+  const messages = await getMessages();
+  const t = (key: string) => messages[key] || key;
 
   const product = await getProduct(id, locale);
 
@@ -82,7 +102,7 @@ export default async function ProductDetailPage({
                 </span>
                 {inStock && (
                   <span className="text-sm bg-green-100 text-green-700 px-2.5 py-1 rounded-full">
-                    {t("inStock")}
+                    {t("Products.inStock")}
                   </span>
                 )}
               </div>
@@ -101,8 +121,11 @@ export default async function ProductDetailPage({
               )}
 
               <div className="mt-auto pt-6">
-                <button className="ios-glass-btn w-full py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-200 shadow-lg shadow-primary/20 disabled:opacity-50" disabled={!inStock}>
-                  {inStock ? t("addToCart") : t("outOfStock")}
+                <button
+                  className="ios-glass-btn w-full py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-all duration-200 shadow-lg shadow-primary/20 disabled:opacity-50"
+                  disabled={!inStock}
+                >
+                  {inStock ? t("Products.addToCart") : t("Products.outOfStock")}
                 </button>
               </div>
             </div>

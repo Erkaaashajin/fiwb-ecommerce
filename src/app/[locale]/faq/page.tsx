@@ -1,6 +1,7 @@
 import FaqAccordion from "@/components/FaqAccordion";
 import FooterSection from "@/components/FooterSection";
-import { useTranslations } from "next-intl";
+import { getMessages } from "next-intl/server";
+import type { Metadata } from "next";
 
 const FAQ_ITEMS = [
   { question: "What payment methods do you accept?", answer: "We accept Visa, Mastercard, Amex, and PayPal through our secure payment gateway. All transactions are encrypted and protected." },
@@ -11,30 +12,64 @@ const FAQ_ITEMS = [
   { question: "Do you offer gift wrapping?", answer: "Yes, we offer complimentary gift wrapping on all orders. Simply select the gift wrap option during checkout." },
 ];
 
-export default function FaqPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-  const t = useTranslations("Faq");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const messages = await getMessages();
+  const t = (key: string) => messages[key] || key;
+  return {
+    title: t("Faq.frequentlyAskedQuestions") || "FAQ",
+    description: t("Faq.findAnswers") || "Find answers to common questions.",
+  };
+}
+
+export default async function FaqPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const messages = await getMessages();
+  const t = (key: string) => messages[key] || key;
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <main>
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/5 border border-primary/15 text-sm font-semibold text-primary mb-4">{t("faq")}</span>
-            <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-6">{t("frequentlyAskedQuestions")}</h1>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">{t("findAnswers")}</p>
+            <span className="inline-block px-3 py-1 rounded-full bg-primary/5 border border-primary/15 text-sm font-semibold text-primary mb-4">
+              {t("Faq.faq")}
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-6">
+              {t("Faq.frequentlyAskedQuestions")}
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+              {t("Faq.findAnswers")}
+            </p>
           </div>
         </section>
 
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <FaqAccordion items={FAQ_ITEMS} />
+          <FaqAccordion items={FAQ_ITEMS} locale={locale} />
         </section>
 
         <section className="bg-surface py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">{t("stillHaveQuestions")}</h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">{t("contactUsDesc")}</p>
-            <a href={`/${locale}/contact`} className="ios-glass-btn inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20">{t("contactUs")}</a>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">
+              {t("Faq.stillHaveQuestions")}
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+              {t("Faq.contactUsDesc")}
+            </p>
+            <a
+              href={`/${locale}/contact`}
+              className="ios-glass-btn inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 hover:scale-[1.02] active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20"
+            >
+              {t("Faq.contactUs")}
+            </a>
           </div>
         </section>
       </main>

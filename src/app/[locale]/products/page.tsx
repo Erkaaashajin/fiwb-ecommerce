@@ -1,13 +1,11 @@
 import ProductGrid from "@/components/ProductGrid";
 import FooterSection from "@/components/FooterSection";
-import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { getMessages } from "next-intl/server";
 import { getServerApolloClient } from "@/lib/apollo/server-client";
 import { CP_POSTS, CP_MENUS } from "@/graphql/cms/queries";
 import type { CmsPost, CmsMenuItem } from "@/graphql/cms/types";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getMessages } from "next-intl/server";
 
 export const revalidate = 60;
 export const dynamic = "force-dynamic";
@@ -15,8 +13,9 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const messages = await getMessages();
   const t = (key: string) => messages[key] || key;
   return {
@@ -25,36 +24,49 @@ export async function generateMetadata({
   };
 }
 
-async function getProductsAndMenu(locale: string, type?: string) {
-  const client = await getServerApolloClient();
-  const variables: Record<string, unknown> = { language: locale, status: "published" };
-  if (type) variables.type = type;
+async function getProductsAndMenu(locale: string) {
+  try {
+    const client = await getServerApolloClient();
 
-  const postsRes = await client.query<{ cpPosts: CmsPost[] }>({ query: CP_POSTS, variables });
-  const menuRes = await client.query<{ cpMenus: CmsMenuItem[] }>({ query: CP_MENUS, variables: { language: locale, kind: "footer" } });
+    const postsRes = await client
+      .query<{ cpPosts: CmsPost[] }>({
+        query: CP_POSTS,
+        variables: { language: locale, status: "published" },
+      })
+      .catch(() => ({ data: null }));
 
-  return {
-    products: postsRes.data?.cpPosts || [],
-    footerMenuItems: menuRes.data?.cpMenus || [],
-  };
+    const menuRes = await client
+      .query<{ cpMenus: CmsMenuItem[] }>({
+        query: CP_MENUS,
+        variables: { language: locale, kind: "footer" },
+      })
+      .catch(() => ({ data: null }));
+
+    return {
+      products: postsRes?.data?.cpPosts || [],
+      footerMenuItems: menuRes?.data?.cpMenus || [],
+    };
+  } catch {
+    return { products: [], footerMenuItems: [] };
+  }
 }
 
 export default async function ProductsPage({
   params,
   searchParams,
 }: {
-  params: { locale: string };
-  searchParams: { category?: string };
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ category?: string }>;
 }) {
-  const { locale } = params;
-  const t = useTranslations("Products");
-  const category = searchParams?.category;
+  const { locale } = await params;
+  const { category } = await searchParams;
+  const messages = await getMessages();
+  const t = (key: string) => messages[key] || key;
 
-  const { products: fetchedProducts, footerMenuItems } = await getProductsAndMenu(locale, "product");
+  const { products: fetchedProducts, footerMenuItems } = await getProductsAndMenu(locale);
 
   let products = fetchedProducts;
 
-  // Fallback if no CMS products found
   if (!products || products.length === 0) {
     products = [
       {
@@ -170,21 +182,12 @@ export default async function ProductsPage({
       <main>
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl sm:text-5xl font-black tracking-tight mb-4"
-            >
+            <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">
               {t("allProducts")}
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-muted-foreground max-w-xl mx-auto"
-            >
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
               {t("browseOurCollection")}
-            </motion.p>
+            </p>
           </div>
         </section>
         <ProductGrid
