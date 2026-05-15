@@ -1,0 +1,114 @@
+{
+  "Home": {
+    "recommended": "Recommended",
+    "youMightAlsoLike": "You might also like",
+    "about": "About",
+    "modernStyle": "Modern Style, Timeless Quality",
+    "aboutDesc": "We curate premium fashion essentials that blend comfort with sophistication.",
+    "whyChooseUs": "Why Choose Us",
+    "everythingYouNeed": "Everything You Need",
+    "faq": "FAQ",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "contact": "Contact",
+    "getInTouch": "Get In Touch"
+  },
+  "Hero": {
+    "tag": "Premium Quality Products",
+    "title": "Elevate Your Everyday",
+    "description": "Discover curated collections designed for the modern lifestyle.",
+    "ctaPrimary": "Shop Now",
+    "ctaSecondary": "Learn More"
+  },
+  "Products": {
+    "allProducts": "All Products",
+    "browseOurCollection": "Browse our curated collection"
+  },
+  "Cart": {
+    "cart": "Cart",
+    "emptyTitle": "Your cart is empty",
+    "emptyDesc": "Start shopping to add items to your cart.",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
+  },
+  "About": {
+    "about": "About",
+    "aboutUs": "About Us",
+    "aboutIntro": "We curate premium fashion essentials blending comfort with sophistication.",
+    "ourStory": "Our Story",
+    "storyTitle": "A Story of Quality",
+    "storyText1": "We have been crafting quality fashion for over 5 years.",
+    "storyText2": "Every piece is thoughtfully selected for style and durability.",
+    "yearsExperience": "5+ Years Experience",
+    "happyCustomers": "10,000+ Happy Customers",
+    "values": "Our Values",
+    "whatWeBelieve": "What We Believe",
+    "quality": "Quality",
+    "qualityDesc": "Every item meets our high standards for materials and craftsmanship.",
+    "sustainability": "Sustainability",
+    "sustainabilityDesc": "We implement sustainable practices in every step of production.",
+    "innovation": "Innovation",
+    "innovationDesc": "We embrace new technology and design to stay ahead.",
+    "team": "Our Team",
+    "meetOurTeam": "Meet Our Team"
+  },
+  "Contact": {
+    "contact": "Contact",
+    "getInTouch": "Get In Touch",
+    "contactDesc": "We'd love to hear from you. Reach out anytime.",
+    "letUsKnow": "Let Us Know",
+    "weRespond": "We respond within 24 hours.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "Faq": {
+    "faq": "FAQ",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "findAnswers": "Find answers to common questions.",
+    "stillHaveQuestions": "Still have questions?",
+    "contactUs": "Contact Us"
+  },
+  "Login": {
+    "signIn": "Sign In",
+    "welcomeBack": "Welcome back",
+    "email": "Email Address",
+    "password": "Password",
+    "signingIn": "Signing in...",
+    "or": "Or",
+    "continueWithGoogle": "Continue with Google",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create Account"
+  },
+  "Register": {
+    "createAccount": "Create Account",
+    "fullName": "Full Name",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In",
+    "creating": "Creating..."
+  },
+  "Checkout": {
+    "checkout": "Checkout",
+    "deliveryInfo": "Delivery Information",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone Number",
+    "address": "Delivery Address",
+    "district": "District",
+    "selectDistrict": "Select District",
+    "paymentMethod": "Payment Method",
+    "selectPayment": "Select Payment",
+    "notes": "Special Instructions",
+    "placeOrder": "Place Order",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "delivery": "Delivery",
+    "free": "Free",
+    "serviceFee": "Service Fee",
+    "orderSummary": "Order Summary"
+  }
+}

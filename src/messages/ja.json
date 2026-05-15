@@ -1,0 +1,114 @@
+{
+  "Home": {
+    "recommended": "おすすめ",
+    "youMightAlsoLike": "あなたへのおすすめ",
+    "about": "私たちについて",
+    "modernStyle": "モダンなスタイル、時代を超える品質",
+    "aboutDesc": "私たちは快適さと洗練を融合させたプレミアムファッションアイテムを厳選しています。",
+    "whyChooseUs": "なぜ私たちを選ぶのか",
+    "everythingYouNeed": "必要なものすべて",
+    "faq": "よくある質問",
+    "frequentlyAskedQuestions": "よくあるご質問",
+    "contact": "お問い合わせ",
+    "getInTouch": "お問い合わせはこちら"
+  },
+  "Hero": {
+    "tag": "プレミアム品質",
+    "title": "あなたの日常を、もっと素敵に",
+    "description": "現代的なライフスタイルに合わせた厳選コレクションをご紹介します。",
+    "ctaPrimary": "ショッピング",
+    "ctaSecondary": "もっと見る"
+  },
+  "Products": {
+    "allProducts": "すべての商品",
+    "browseOurCollection": "コレクションを見る"
+  },
+  "Cart": {
+    "cart": "カート",
+    "emptyTitle": "カートは空です",
+    "emptyDesc": "商品を選んでカートに追加しましょう。",
+    "orderSummary": "注文サマリー",
+    "subtotal": "小計",
+    "shipping": "配送",
+    "free": "無料",
+    "total": "合計",
+    "checkout": "レジに進む",
+    "continueShopping": "買い物を続ける"
+  },
+  "About": {
+    "about": "私たちについて",
+    "aboutUs": "会社概要",
+    "aboutIntro": "快適さと洗練を融合させたプレミアムファッションアイテムを厳選しています。",
+    "ourStory": "私たちの物語",
+    "storyTitle": "品質への物語",
+    "storyText1": "5年以上にわたり高品質なファッションを提供してきました。",
+    "storyText2": "すべての商品は素材とデザインにこだわって厳選しています。",
+    "yearsExperience": "5年以上の経験",
+    "happyCustomers": "10,000人以上のお客様",
+    "values": "私たちの価値観",
+    "whatWeBelieve": "私たちの信念",
+    "quality": "品質",
+    "qualityDesc": "すべての商品は素材と品質の高い基準を満たしています。",
+    "sustainability": "サステナビリティ",
+    "sustainabilityDesc": "製造プロセス全体で持続可能な取り組みを行っています。",
+    "innovation": "イノベーション",
+    "innovationDesc": "最新の技術とデザインを取り入れています。",
+    "team": "チーム",
+    "meetOurTeam": "チーム紹介"
+  },
+  "Contact": {
+    "contact": "お問い合わせ",
+    "getInTouch": "お問い合わせ",
+    "contactDesc": "お気軽にご連絡ください。いつでも対応いたします。",
+    "letUsKnow": "お気軽にご連絡ください",
+    "weRespond": "24時間以内にご返信いたします。",
+    "email": "メールアドレス",
+    "phone": "電話番号",
+    "address": "住所"
+  },
+  "Faq": {
+    "faq": "よくある質問",
+    "frequentlyAskedQuestions": "よくあるご質問",
+    "findAnswers": "よくある質問の答えはこちら。",
+    "stillHaveQuestions": "ご不明な点がありますか？",
+    "contactUs": "お問い合わせはこちら"
+  },
+  "Login": {
+    "signIn": "ログイン",
+    "welcomeBack": "おかえりなさい",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "signingIn": "ログイン中...",
+    "or": "または",
+    "continueWithGoogle": "Googleでログイン",
+    "noAccount": "アカウントをお持ちではありませんか？",
+    "createAccount": "アカウント作成"
+  },
+  "Register": {
+    "createAccount": "アカウント作成",
+    "fullName": "お名前",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "signIn": "ログイン",
+    "creating": "作成中..."
+  },
+  "Checkout": {
+    "checkout": "レジに進む",
+    "deliveryInfo": "配送情報",
+    "firstName": "姓",
+    "lastName": "名",
+    "phone": "電話番号",
+    "address": "配送先住所",
+    "district": "区",
+    "selectDistrict": "区を選択",
+    "paymentMethod": "支払い方法",
+    "selectPayment": "支払い方法を選択",
+    "notes": "特記事項",
+    "placeOrder": "注文する",
+    "subtotal": "小計",
+    "total": "合計",
+    "delivery": "配送",
+    "free": "無料",
+    "serviceFee": "サービス料",
+    "orderSummary": "注文サマリー"
+  }
+}

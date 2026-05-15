@@ -1,0 +1,114 @@
+{
+  "Home": {
+    "recommended": "推荐",
+    "youMightAlsoLike": "你可能也会喜欢",
+    "about": "关于",
+    "modernStyle": "现代风格，永恒品质",
+    "aboutDesc": "我们精选高品质时尚单品，将舒适与精致融为一体。",
+    "whyChooseUs": "为什么选择我们",
+    "everythingYouNeed": "您需要的一切",
+    "faq": "常见问题",
+    "frequentlyAskedQuestions": "常见问题",
+    "contact": "联系我们",
+    "getInTouch": "联系我们"
+  },
+  "Hero": {
+    "tag": "精品品质",
+    "title": "点亮你的每一天",
+    "description": "为您带来精心策划的现代时尚系列。",
+    "ctaPrimary": "立即选购",
+    "ctaSecondary": "了解更多"
+  },
+  "Products": {
+    "allProducts": "全部商品",
+    "browseOurCollection": "浏览我们的精选系列"
+  },
+  "Cart": {
+    "cart": "购物车",
+    "emptyTitle": "购物车为空",
+    "emptyDesc": "开始挑选您喜欢的商品吧。",
+    "orderSummary": "订单摘要",
+    "subtotal": "小计",
+    "shipping": "配送",
+    "free": "免费",
+    "total": "总计",
+    "checkout": "结算",
+    "continueShopping": "继续购物"
+  },
+  "About": {
+    "about": "关于",
+    "aboutUs": "关于我们",
+    "aboutIntro": "我们精选高品质时尚单品，将舒适与精致融为一体。",
+    "ourStory": "我们的故事",
+    "storyTitle": "品质的故事",
+    "storyText1": "我们致力于提供超过5年的高品质时尚产品。",
+    "storyText2": "每一件商品都经过精心挑选，注重材质与设计。",
+    "yearsExperience": "5年以上经验",
+    "happyCustomers": "超过10,000位满意客户",
+    "values": "我们的价值观",
+    "whatWeBelieve": "我们的信念",
+    "quality": "品质",
+    "qualityDesc": "每一件商品都符合高品质标准。",
+    "sustainability": "可持续性",
+    "sustainabilityDesc": "我们在生产过程中践行可持续理念。",
+    "innovation": "创新",
+    "innovationDesc": "我们采用最新技术和设计理念。",
+    "team": "团队",
+    "meetOurTeam": "认识我们的团队"
+  },
+  "Contact": {
+    "contact": "联系我们",
+    "getInTouch": "联系我们",
+    "contactDesc": "我们随时欢迎您的垂询，竭诚为您服务。",
+    "letUsKnow": "请告诉我们",
+    "weRespond": "我们会在24小时内回复。",
+    "email": "电子邮件",
+    "phone": "电话号码",
+    "address": "地址"
+  },
+  "Faq": {
+    "faq": "常见问题",
+    "frequentlyAskedQuestions": "常见问题",
+    "findAnswers": "在此查找常见问题的答案。",
+    "stillHaveQuestions": "还有其他问题吗？",
+    "contactUs": "联系我们"
+  },
+  "Login": {
+    "signIn": "登录",
+    "welcomeBack": "欢迎回来",
+    "email": "电子邮箱",
+    "password": "密码",
+    "signingIn": "登录中...",
+    "or": "或者",
+    "continueWithGoogle": "使用 Google 登录",
+    "noAccount": "还没有账户？",
+    "createAccount": "创建账户"
+  },
+  "Register": {
+    "createAccount": "创建账户",
+    "fullName": "姓名",
+    "alreadyHaveAccount": "已有账户？",
+    "signIn": "登录",
+    "creating": "创建中..."
+  },
+  "Checkout": {
+    "checkout": "结算",
+    "deliveryInfo": "配送信息",
+    "firstName": "姓",
+    "lastName": "名",
+    "phone": "电话号码",
+    "address": "配送地址",
+    "district": "区",
+    "selectDistrict": "选择区",
+    "paymentMethod": "支付方式",
+    "selectPayment": "选择支付方式",
+    "notes": "备注",
+    "placeOrder": "提交订单",
+    "subtotal": "小计",
+    "total": "总计",
+    "delivery": "配送",
+    "free": "免费",
+    "serviceFee": "服务费",
+    "orderSummary": "订单摘要"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "site": "www.pencil.dev",
+  "start_url": "https://www.pencil.dev/",
+  "audited_at": "2026-05-12T13:01:25.795Z",
+  "locales": [
+    "en"
+  ],
+  "audited_pages": [
+    {
+      "url": "https://www.pencil.dev",
+      "pathname": "/",
+      "title": "Pencil – Design on canvas. Land in code.",
+      "description": "Pencil fundamentally increases your engineering speed by bringing designing directly into your preferred IDE.",
+      "locale": null,
+      "html_lang": "en",
+      "headings": [],
+      "cta_labels": [],
+      "text_blocks": [],
+      "links": [],
+      "contact": {
+        "emails": [],
+        "phones": [
+          "13971731025",
+          "7882-279267",
+          "8168-6551"
+        ]
+      },
+      "source": "seed"
+    }
+  ],
+  "discovered_pages": [],
+  "skipped_pages": []
+}

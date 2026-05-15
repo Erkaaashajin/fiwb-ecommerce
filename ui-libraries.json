@@ -1,0 +1,39 @@
+{
+  "motion_level": 2,
+  "visual_direction": "glass-future",
+  "packages": [
+    "framer-motion",
+    "clsx",
+    "tailwind-merge",
+    "lucide-react",
+    "next-themes",
+    "react-intersection-observer",
+    "lenis",
+    "@react-bits/Prism-TS-TW"
+  ],
+  "shadcn_components": [],
+  "custom_components": [
+    "GlassNav/header",
+    "HeroSection",
+    "ProductCard",
+    "ProductGrid",
+    "FeatureCard",
+    "PricingCard",
+    "FaqAccordion",
+    "ContactForm",
+    "FooterSection",
+    "StatsCounter",
+    "GlassPanel",
+    "GradientButton",
+    "PriceDisplay"
+  ],
+  "animation_config": {
+    "core_library": "framer-motion",
+    "scroll_library": "lenis",
+    "text_animation": "custom",
+    "page_transition": "framer",
+    "ambient_system": "css",
+    "micro_interactions": "framer-motion",
+    "gsap_plugins": []
+  }
+}
