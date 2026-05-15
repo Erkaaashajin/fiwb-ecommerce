@@ -33,7 +33,12 @@ export default async function FaqPage({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = (key: string) => messages[key] || key;
+  const t = (key: string) => {
+    const parts = key.split(".");
+    let result: any = messages;
+    for (const p of parts) { result = result?.[p]; if (result === undefined) return key; }
+    return typeof result === "string" ? result : key;
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">

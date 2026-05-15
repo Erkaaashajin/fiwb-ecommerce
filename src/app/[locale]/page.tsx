@@ -59,7 +59,12 @@ export default async function HomePage({
 }) {
   const { locale } = await params;
   const messages = await getMessages();
-  const t = (key: string) => messages[key] || key;
+  const t = (key: string) => {
+    const parts = key.split(".");
+    let result: any = messages;
+    for (const p of parts) { result = result?.[p]; if (result === undefined) return key; }
+    return typeof result === "string" ? result : key;
+  };
   const isMn = locale === "mn";
 
   let { products, headerMenuItems, footerMenuItems } = await getHomePageData(locale);

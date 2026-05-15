@@ -58,12 +58,17 @@ export default async function ProductsPage({
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ category?: string }>;
 }) {
-  const { locale } = await params;
-  const { category } = await searchParams;
-  const messages = await getMessages();
-  const t = (key: string) => messages[key] || key;
+const { locale } = await params;
+   const { category } = await searchParams;
+   const messages = await getMessages();
+   const t = (key: string) => {
+     const parts = key.split(".");
+     let result: any = messages;
+     for (const p of parts) { result = result?.[p]; if (result === undefined) return key; }
+     return typeof result === "string" ? result : key;
+   };
 
-  const { products: fetchedProducts, footerMenuItems } = await getProductsAndMenu(locale);
+   const { products: fetchedProducts, footerMenuItems } = await getProductsAndMenu(locale);
 
   let products = fetchedProducts;
 
