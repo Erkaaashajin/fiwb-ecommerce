@@ -20,7 +20,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, index }: ProductCardProps) {
   const router = useRouter();
-  const imageUrl = product.images?.[0] || "/images/placeholder.png";
+  const imageUrl = product.images?.[0] || "/placeholder.png";
   const currency = "MNT";
 
   return (

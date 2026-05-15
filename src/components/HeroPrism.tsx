@@ -1,6 +1,8 @@
 "use client";
 
-// Light prism — SVG-based animated triangle mesh on white/cream background
+import { motion } from "framer-motion";
+
+// Light prism — SVG gradient background (no external images needed)
 export default function HeroPrism() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -21,7 +23,10 @@ export default function HeroPrism() {
           </linearGradient>
           <filter id="glowL">
             <feGaussianBlur stdDeviation="28" result="b" />
-            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
           </filter>
         </defs>
         <polygon points="250,30 470,370 30,370" fill="url(#prismL)" filter="url(#glowL)">

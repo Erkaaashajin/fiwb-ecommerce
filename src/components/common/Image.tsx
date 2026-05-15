@@ -3,14 +3,18 @@
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 import { useState } from "react";
 
-const PLACEHOLDER = "/images/placeholder.png";
+const PLACEHOLDER = "/placeholder.png";
 
 function getFileUrl(url: string): string {
   if (!url) return "";
   if (url.startsWith("http")) return url;
-  const endpoint = process.env.NEXT_PUBLIC_ERXES_ENDPOINT || "";
-  const apiDomain = endpoint.replace(/\/gateway\/graphql$/, "");
-  return apiDomain ? `${apiDomain}/read-file?key=${url}` : url;
+  // For local files, serve from public/
+  const apiDomain = process.env.NEXT_PUBLIC_ERXES_ENDPOINT || "";
+  if (apiDomain) {
+    return `${apiDomain.replace(/\/gateway\/graphql$/, "")}/read-file?key=${url}`;
+  }
+  // Fallback: try public path
+  return url.startsWith("/") ? url : `/${url}`;
 }
 
 type ImageProps = Omit<NextImageProps, "src"> & {
