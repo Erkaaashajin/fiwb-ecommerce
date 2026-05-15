@@ -33,12 +33,20 @@ export default function GlassHeader({ menuItems }: GlassHeaderProps = {}) {
   const currentLang = parts[1] || "mn";
 
   // Build nav links: merge CMS menu items (header kind) with defaults
-  const navLinks = menuItems?.length
+  const rawLinks = menuItems?.length
     ? menuItems
         .filter((item) => item.kind === "header" && item.label && item.url)
         .sort((a, b) => (a.order || 0) - (b.order || 0))
         .map((item) => ({ label: item.label!, href: item.url! }))
     : DEFAULT_NAV_LINKS;
+
+  // Deduplicate by href to prevent duplicate nav buttons
+  const seen = new Set<string>();
+  const navLinks = rawLinks.filter((link) => {
+    if (seen.has(link.href)) return false;
+    seen.add(link.href);
+    return true;
+  });
 
   const handleLangChange = (code: string) => {
     setLangOpen(false);
