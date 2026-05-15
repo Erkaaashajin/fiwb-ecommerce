@@ -115,7 +115,13 @@ export default async function HomePage({
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Header menuItems={headerMenuItems} />
       <main>
-        <HeroSection />
+        <HeroSection
+         tag={t("Hero.tag")}
+         title={t("Hero.title")}
+         description={t("Hero.description")}
+         ctaPrimary={t("Hero.ctaPrimary")}
+         ctaSecondary={t("Hero.ctaSecondary")}
+       />
 
         <section className="bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">

@@ -3,10 +3,22 @@
 import { motion } from "framer-motion";
 import HeroPrism from "./HeroPrism";
 import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
 
-export default function HeroSection() {
-  const t = useTranslations("Hero");
+interface HeroSectionProps {
+  tag: string;
+  title: string;
+  description: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+}
+
+export default function HeroSection({
+  tag,
+  title,
+  description,
+  ctaPrimary,
+  ctaSecondary,
+}: HeroSectionProps) {
   const router = useRouter();
 
   return (
@@ -26,13 +38,13 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 border border-primary/15 mb-6 backdrop-blur-sm"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm font-semibold text-primary">{t("tag")}</span>
+            <span className="text-sm font-semibold text-primary">{tag}</span>
           </motion.div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground tracking-tight mb-6 leading-tight">
-            {t("title")}
+            {title}
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-            {t("description")}
+            {description}
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -44,13 +56,13 @@ export default function HeroSection() {
               onClick={() => router.push("/products")}
               className="ios-glass-btn px-8 py-4 bg-primary text-white font-semibold text-lg hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg shadow-primary/20"
             >
-              {t("ctaPrimary")}
+              {ctaPrimary}
             </button>
             <button
               onClick={() => router.push("/about")}
               className="ios-glass-btn px-8 py-4 bg-background/50 backdrop-blur-sm border border-border text-foreground font-semibold text-lg hover:bg-accent/10 hover:scale-105 active:scale-95 transition-all duration-200"
             >
-              {t("ctaSecondary")}
+              {ctaSecondary}
             </button>
           </motion.div>
         </motion.div>
